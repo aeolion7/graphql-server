@@ -1,0 +1,27 @@
+{
+  "name": "graphql-server",
+  "version": "1.0.0",
+  "description": "Simple GraphQL server.",
+  "main": "server.js",
+  "scripts": {
+    "dev:server": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aeolion7/graphql-server.git"
+  },
+  "author": "Joseph Lionarons",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aeolion7/graphql-server/issues"
+  },
+  "homepage": "https://github.com/aeolion7/graphql-server#readme",
+  "dependencies": {
+    "express": "^4.17.0",
+    "express-graphql": "^0.8.0",
+    "graphql": "^14.3.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.0"
+  }
+}
