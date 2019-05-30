@@ -9,6 +9,7 @@ const {
 const axios = require('axios');
 const jsonURL = 'http://localhost:3000/customers';
 
+// Defining a Customer type
 const CustomerType = new GraphQLObjectType({
   name: 'Customer',
   fields: () => ({
@@ -31,6 +32,7 @@ const RootQuery = new GraphQLObjectType({
         },
       },
       async resolve(parent, args) {
+        // Within the resolve function, the data is retrieved
         const { data } = await axios.get(jsonURL + `/${args.id}`);
         return data;
       },
