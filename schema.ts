@@ -30,14 +30,14 @@ const RootQuery = new GraphQLObjectType({
           type: GraphQLString,
         },
       },
-      async resolve(parent, args) {
+      async resolve(parent: any, args: any) {
         const { data } = await axios.get(jsonURL + `/${args.id}`);
         return data;
       },
     },
     customers: {
       type: GraphQLList(CustomerType),
-      async resolve(parent, args) {
+      async resolve(parent: any, args: any) {
         const { data } = await axios.get(jsonURL);
         return data;
       },
@@ -57,7 +57,7 @@ const mutation = new GraphQLObjectType({
         email: { type: GraphQLNonNull(GraphQLString) },
         age: { type: GraphQLNonNull(GraphQLInt) },
       },
-      resolve(parent, args) {
+      resolve(parent: any, args: any) {
         const { name, email, age } = args;
         return axios
           .post(jsonURL, {
@@ -65,7 +65,7 @@ const mutation = new GraphQLObjectType({
             email,
             age,
           })
-          .then(res => res.data);
+          .then((res: any) => res.data);
       },
     },
     editCustomer: {
@@ -76,8 +76,10 @@ const mutation = new GraphQLObjectType({
         email: { type: GraphQLString },
         age: { type: GraphQLInt },
       },
-      resolve(parent, args) {
-        return axios.patch(jsonURL + `/${args.id}`, args).then(res => res.data);
+      resolve(parent: any, args: any) {
+        return axios
+          .patch(jsonURL + `/${args.id}`, args)
+          .then((res: any) => res.data);
       },
     },
     deleteCustomer: {
@@ -85,7 +87,7 @@ const mutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLString) },
       },
-      resolve(parent, args) {
+      resolve(parent: any, args: any) {
         const { name, email, age } = args;
         return axios
           .delete(jsonURL + `/${args.id}`, {
@@ -93,7 +95,7 @@ const mutation = new GraphQLObjectType({
             email,
             age,
           })
-          .then(res => res.data);
+          .then((res: any) => res.data);
       },
     },
   },
